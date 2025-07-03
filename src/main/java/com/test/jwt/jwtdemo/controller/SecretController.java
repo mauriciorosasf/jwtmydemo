@@ -6,19 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.test.jwt.jwtdemo.dto.MessageDto;
+
 @RestController
 public class SecretController {
 
     @PreAuthorize("hasRole('STAFF')")
     @GetMapping("/staff")
-    public ResponseEntity<String> helloAdmin(){
-        return ResponseEntity.ok("this is staff");
+    public MessageDto staff(){
+        return new MessageDto("this is staff");
     }
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user")
-    public ResponseEntity<String> helloUser(){
-        return ResponseEntity.ok("this is user");
+    public MessageDto user(){
+    	 return new MessageDto("this is user");
+       
     }
 }
 
